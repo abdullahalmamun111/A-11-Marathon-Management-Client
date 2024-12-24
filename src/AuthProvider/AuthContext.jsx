@@ -47,7 +47,8 @@ const handleLogOut = () => {
         setUser,
         handleSignIn,
         handleGoogleLogin,
-        handleLogOut
+        handleLogOut,
+        loading
     }
 
     return (

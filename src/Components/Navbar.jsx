@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { contextApi } from '../AuthProvider/AuthContext';
 import Swal from 'sweetalert2';
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const Navbar = () => {
     const { user, handleLogOut, loading } = useContext(contextApi);
@@ -64,30 +65,30 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/allcampaign"} className="text-lg font-medium">
-                All Campaign
+              <NavLink to={"/marathons"} className="text-lg font-medium">
+              Marathons
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/addcampaign"} className="text-lg font-medium">
-                Add New Campaign
+              <NavLink to={"/dashboard"} className="text-lg font-medium">
+                Dashboard
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to={"/mycampaign"} className="text-lg font-medium">
                 My Campaign
               </NavLink>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <NavLink to={"/mydonation"} className="text-lg font-medium">
                 My Donations
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
         <a className="font-extrabold text-xl md:text-2xl md:font-bold lg:text-3xl lg:font-bold ml-1">
-          <span className="text-primary">Fund</span>
-          <span className="text-secondary">Sprout</span>
+          <span className="text-blue-800">Run</span>
+          <span className="text-green-800">Sphere</span>
         </a>
       </div>
 
@@ -108,29 +109,29 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to={"/allcampaign"}
+              to={"/marathons"}
               className={({ isActive }) =>
                 isActive
                   ? "text-black font-bold text-[16px]"
                   : "text-primary font-bold text-[16px]"
               }
             >
-              All Campaign
+              Marathons
             </NavLink>
           </li>
           <li>
             <NavLink
-              to={"/addcampaign"}
+              to={"/dashboard"}
               className={({ isActive }) =>
                 isActive
                   ? "text-black font-bold text-[16px]"
                   : "text-primary font-bold text-[16px]"
               }
             >
-              Add New Campaign
+              Dashboard
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               to={"/mycampaign"}
               className={({ isActive }) =>
@@ -141,8 +142,8 @@ const Navbar = () => {
             >
               My Campaign
             </NavLink>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <NavLink
               to={"/mydonation"}
               className={({ isActive }) =>
@@ -153,7 +154,7 @@ const Navbar = () => {
             >
               My Donations
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
 
@@ -209,6 +210,12 @@ const Navbar = () => {
                 className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-gray-300"
                 src={user?.photoURL || "https://via.placeholder.com/150"}
                 alt={user?.displayName || "User"}
+              />
+               <ReactTooltip
+                id="my-tooltip-2"
+                place="bottom"
+                variant="info"
+                content={ user.displayName}
               />
               {/* <ReactTooltip
                 id="my-tooltip-2"

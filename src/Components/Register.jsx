@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { contextApi } from "../AuthProvider/AuthContext";
 
 const Register = () => {
-    const {createUser,setUser} = useContext(contextApi);
+    const {createUser,setUser,handleGoogleLogin} = useContext(contextApi);
     const [toggle, setToggle] = useState(false);
     const handleToggle = ()=> {
       setToggle(!toggle);
