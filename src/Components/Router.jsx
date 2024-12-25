@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../Pages/MainLayout';
 import Register from './Register';
@@ -9,6 +9,7 @@ import Dashboard from '../Pages/Dashboard';
 import Demo from './Demo';
 import PrivateRoute from './PrivateRoute';
 import AddMarathon from './AddMarathon';
+import Details from '../Pages/Details';
 
 const router = createBrowserRouter([
 
@@ -38,8 +39,14 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
             },
             {
-                path:'dashboard/addmarathon',
-                element: <PrivateRoute><AddMarathon></AddMarathon></PrivateRoute>
+                path:'details/:id',
+                element: <PrivateRoute><Details></Details></PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/marathon/${params.id}`)
+            },
+            {
+                path:'marathons/details/:id',
+                element: <PrivateRoute><Details></Details></PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/marathon/${params.id}`)
             }
         ]
     }
