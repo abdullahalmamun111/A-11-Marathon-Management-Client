@@ -8,6 +8,7 @@ import Home from '../Pages/Home';
 import Dashboard from '../Pages/Dashboard';
 import Demo from './Demo';
 import PrivateRoute from './PrivateRoute';
+import AddMarathon from './AddMarathon';
 
 const router = createBrowserRouter([
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path:'dashboard',
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+            },
+            {
+                path:'dashboard/addmarathon',
+                element: <PrivateRoute><AddMarathon></AddMarathon></PrivateRoute>
             }
         ]
     }

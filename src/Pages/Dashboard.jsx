@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import AddMarathon from "../Components/AddMarathon";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState("addMarathon");
+    const navigate = useNavigate();
 
     const renderContent = () => {
         switch (activeTab) {
             case "addMarathon":
-                return <div className="bg-gray-100 p-6 rounded-lg shadow">Marathon Form</div>;
+                return <div className="p-6 rounded-lg">
+                    <AddMarathon></AddMarathon>
+                </div>;
             case "myMarathonList":
                 return <div className="bg-gray-100 p-6 rounded-lg shadow">List of Marathons (Fetched from Database)</div>;
             case "myApplyList":
@@ -17,7 +22,7 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col ">
             {/* Header */}
             <header className="bg-blue-600 text-white text-center py-4">
                 <h1 className="text-2xl font-bold">Dashboard</h1>
@@ -68,7 +73,7 @@ const Dashboard = () => {
                 </nav>
 
                 {/* Content Area */}
-                <main className="w-3/4 p-6 bg-gray-50">
+                <main className="w-3/4 h-full p-6 bg-gray-50">
                     {renderContent()}
                 </main>
             </div>
