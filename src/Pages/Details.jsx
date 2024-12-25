@@ -56,7 +56,7 @@ const Details = () => {
                   <span className="font-semibold text-purple-500">Created At:</span> {new Date(createdAt).toLocaleDateString("en-CA")}
                 </p>
                 <p>
-                  <span className="font-semibold text-purple-500">Registrations:</span> {registrationCount}
+                  <span className="font-semibold text-purple-500">Registrations:</span> {registrationCount} People
                 </p>
               </div>
             </div>

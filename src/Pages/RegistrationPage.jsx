@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const RegistrationPage = () => {
   const loadedData = useLoaderData();
 
-  const { title, marathonStartDate } = loadedData;
+  const { title, marathonStartDate, _id } = loadedData;
 
   //   {
   //     "_id": "676b67a103ee0b8017ecfb84",
@@ -47,6 +47,7 @@ const RegistrationPage = () => {
       marathonId,
       marathonTitle: title,
       marathonStartDate: startDate,
+      marathon_id: _id
     };
 
     fetch("http://localhost:5000/registrations", {
