@@ -1,10 +1,12 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 
 const Details = () => {
+  const navigate = useNavigate();
   const detailsData = useLoaderData();
 
   const {
+    _id,
     title,
     location,
     distance,
@@ -64,11 +66,13 @@ const Details = () => {
               <p className="text-gray-700 text-base leading-relaxed">{description}</p>
             </div>
 
+            <Link to={`/registration/${_id}`}>
             <button
               className="w-full bg-purple-500 text-white py-3 rounded-lg text-lg font-semibold hover:bg-purple-600 transition-colors duration-300"
             >
               Register Now
             </button>
+            </Link>
           </div>
         </div>
       </div>

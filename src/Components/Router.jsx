@@ -10,6 +10,7 @@ import Demo from './Demo';
 import PrivateRoute from './PrivateRoute';
 import AddMarathon from './AddMarathon';
 import Details from '../Pages/Details';
+import RegistrationPage from '../Pages/RegistrationPage';
 
 const router = createBrowserRouter([
 
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
             {
                 path:'marathons/details/:id',
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/marathon/${params.id}`)
+            },
+            {
+                path:'registration/:id',
+                element: <PrivateRoute><RegistrationPage></RegistrationPage></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/marathon/${params.id}`)
             }
         ]
