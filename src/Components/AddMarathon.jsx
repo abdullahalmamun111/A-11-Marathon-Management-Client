@@ -26,6 +26,7 @@ const AddMarathon = () => {
         marathonData.marathonStartDate = marathonStartDate;
         marathonData.createdAt = new Date();
         marathonData.registrationCount = 0;
+        marathonData.email = user.email;
 
         fetch('http://localhost:5000/addmarathon',{
             method:'POST',
@@ -76,20 +77,7 @@ const AddMarathon = () => {
                         />
                     </div>
 
-                    {/* creater's Email */}
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">
-                            Creaters Email
-                        </label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={user.email}
-                            readOnly
-                            className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400"
-                            required
-                        />
-                    </div>
+                   
 
                     {/* Start Registration Date */}
                     <div>

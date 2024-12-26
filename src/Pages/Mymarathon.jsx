@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { contextApi } from '../AuthProvider/AuthContext';
+import Swal from 'sweetalert2';
+
 
 const Mymarathon = () => {
     const { user } = useContext(contextApi);
@@ -14,19 +16,33 @@ const Mymarathon = () => {
     }, [user.email]);
 
     const handleDelete = (id) => {
-        const confirmDelete = window.confirm("Are you sure you want to delete this marathon?");
-        if (confirmDelete) {
-            fetch(`http://localhost:5000/marathon/${id}`, {
-                method: 'DELETE',
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('Marathon deleted successfully!');
-                        setMarathon(userMarathon.filter(marathon => marathon._id !== id));
-                    }
-                });
-        }
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if(result.isConfirmed){
+                fetch(`http://localhost:5000/allmarathon/${id}`, {
+                    method: "DELETE",
+                })
+                .then((res) => res.json())
+                .then((data) => {
+                  if (data.deletedCount) {
+                    Swal.fire({
+                      title: "Deleted!",
+                      text: "Your campaign has been deleted.",
+                      icon: "success",
+                    });
+                    const remaining = userMarathon.filter((marthon) => marthon._id !== id);
+                    setMarathon(remaining);
+                  }
+                });  
+            }
+          })
     };
 
     const handleUpdate = (id) => {
