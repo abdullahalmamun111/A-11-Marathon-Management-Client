@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddMarathon from "../Components/AddMarathon";
 import { useNavigate } from "react-router-dom";
+import Mymarathon from "./Mymarathon";
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState("addMarathon");
@@ -13,7 +14,9 @@ const Dashboard = () => {
                     <AddMarathon></AddMarathon>
                 </div>;
             case "myMarathonList":
-                return <div className="bg-gray-100 p-6 rounded-lg shadow">List of Marathons (Fetched from Database)</div>;
+                return <div className="bg-gray-100 p-6 rounded-lg shadow">
+                    <Mymarathon></Mymarathon>
+                </div>;
             case "myApplyList":
                 return <div className="bg-gray-100 p-6 rounded-lg shadow">List of Applies (Fetched from Database)</div>;
             default:

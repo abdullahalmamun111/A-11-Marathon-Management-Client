@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaRegCalendarAlt } from "react-icons/fa"; // Import calendar icon
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { contextApi } from "../AuthProvider/AuthContext";
 
 const AddMarathon = () => {
+    const {user} = useContext(contextApi)
     const navigate = useNavigate();
     const [startRegDate, setStartRegDate] = useState(null);
     const [endRegDate, setEndRegDate] = useState(null);
@@ -69,6 +71,21 @@ const AddMarathon = () => {
                             type="text"
                             name="title"
                             placeholder="Enter marathon title"
+                            className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400"
+                            required
+                        />
+                    </div>
+
+                    {/* creater's Email */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
+                            Creaters Email
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={user.email}
+                            readOnly
                             className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400"
                             required
                         />
