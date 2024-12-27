@@ -11,6 +11,26 @@ const MyApply = () => {
   const navigate = useNavigate();
   const [updateapplyId, setUpdateApplyId] = useState(null);
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // সার্চ অনুযায়ী আবেদন ফিল্টার করা
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/searchApply?email=${user.email}&title=${searchQuery}`
+        );
+        const data = await response.json();
+        setApplyData(data); // সার্চ রেজাল্ট সেট
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+      }
+    };
+
+    fetchSearchResults();
+  }, [searchQuery, user.email]);
+
+//   apply data load
   useEffect(() => {
     fetch(`http://localhost:5000/registrations?email=${user.email}`)
       .then((res) => res.json())
@@ -102,9 +122,7 @@ const MyApply = () => {
                 text: "Your Apply has been deleted.",
                 icon: "success",
               });
-              const remaining = applyData.filter(
-                (apply) => apply._id !== id
-              );
+              const remaining = applyData.filter((apply) => apply._id !== id);
               setApplyData(remaining);
             }
           });
@@ -117,6 +135,14 @@ const MyApply = () => {
       <h1 className="text-3xl font-bold text-center mb-6 text-blue-600">
         My Applications ({applyData.length})
       </h1>
+
+      <input
+        type="text"
+        placeholder="Search by title"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="w-full p-2 border border-gray-300 rounded mb-4"
+      />
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse bg-white shadow-md rounded-lg overflow-hidden">
           <thead className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
