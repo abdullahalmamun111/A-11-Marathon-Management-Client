@@ -24,7 +24,6 @@ const RegistrationPage = () => {
 
   console.log(loadedData);
   const { user } = useContext(contextApi); // For auto-filled email
-  const { marathonId, startDate } = useParams(); // For marathon-specific data
   const [formData, setFormData] = useState({
     email: user?.email || "",
     firstName: "",
@@ -44,9 +43,8 @@ const RegistrationPage = () => {
 
     const registrationData = {
       ...formData,
-      marathonId,
       marathonTitle: title,
-      marathonStartDate: startDate,
+      marathonStartDate: marathonStartDate,
       marathon_id: _id
     };
 

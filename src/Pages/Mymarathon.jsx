@@ -191,7 +191,6 @@ const Mymarathon = () => {
                   </label>
                   <input
                     type="text"
-                    
                     name="title"
                     placeholder="Enter marathon title"
                     className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400"
@@ -329,14 +328,14 @@ const Mymarathon = () => {
                   <div className="mt-3 modal-action">
                     <form method="dialog">
                       {/* if there is a button, it will close the modal */}
-                      {/* <button
+                      <button
                         onClick={() =>
                           document.getElementById("my_modal_4").close()
                         }
                         className="btn w-full text-white bg-blue-600"
                       >
                         Close Modal
-                      </button> */}
+                      </button>
                     </form>
                   </div>
                 </div>
