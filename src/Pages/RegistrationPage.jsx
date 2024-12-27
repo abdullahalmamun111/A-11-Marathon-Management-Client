@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import { contextApi } from "../AuthProvider/AuthContext";
 import { useParams, useNavigate, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import Loading from "../Components/Loading";
 
 const RegistrationPage = () => {
+  const { loading } = useContext(contextApi);
   const loadedData = useLoaderData();
 
   const { title, marathonStartDate, _id } = loadedData;
@@ -45,7 +47,7 @@ const RegistrationPage = () => {
       ...formData,
       marathonTitle: title,
       marathonStartDate: marathonStartDate,
-      marathon_id: _id
+      marathon_id: _id,
     };
 
     fetch("http://localhost:5000/registrations", {
@@ -74,123 +76,127 @@ const RegistrationPage = () => {
       });
   };
 
-  return (
-    <div className="bg-gradient-to-r from-purple-300 via-blue-300 to-green-300 min-h-screen flex items-center justify-center">
-      <div className="bg-white p-8 my-4 rounded-lg shadow-lg w-full max-w-lg">
-        <h1 className="text-3xl font-bold text-center text-purple-500 mb-6">
-          Marathon Registration
-        </h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              readOnly
-              className="w-full px-4 py-2 mt-1 border rounded-md bg-gray-100 cursor-not-allowed"
-            />
-          </div>
+  if (loading) {
+    return <Loading></Loading>;
+  } else {
+    return (
+      <div className="bg-gradient-to-r from-purple-300 via-blue-300 to-green-300 min-h-screen flex items-center justify-center">
+        <div className="bg-white p-8 my-4 rounded-lg shadow-lg w-full max-w-lg">
+          <h1 className="text-3xl font-bold text-center text-purple-500 mb-6">
+            Marathon Registration
+          </h1>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Email */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                readOnly
+                className="w-full px-4 py-2 mt-1 border rounded-md bg-gray-100 cursor-not-allowed"
+              />
+            </div>
 
-          {/* Marathon Title */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Marathon Title
-            </label>
-            <input
-              type="text"
-              value={title}
-              readOnly
-              className="w-full px-4 py-2 mt-1 border rounded-md bg-gray-100 cursor-not-allowed"
-            />
-          </div>
+            {/* Marathon Title */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Marathon Title
+              </label>
+              <input
+                type="text"
+                value={title}
+                readOnly
+                className="w-full px-4 py-2 mt-1 border rounded-md bg-gray-100 cursor-not-allowed"
+              />
+            </div>
 
-          {/* Marathon Start Date */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Marathon Start Date
-            </label>
-            <input
-              type="text"
-              value={marathonStartDate}
-              readOnly
-              className="w-full px-4 py-2 mt-1 border rounded-md bg-gray-100 cursor-not-allowed"
-            />
-          </div>
+            {/* Marathon Start Date */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Marathon Start Date
+              </label>
+              <input
+                type="text"
+                value={marathonStartDate}
+                readOnly
+                className="w-full px-4 py-2 mt-1 border rounded-md bg-gray-100 cursor-not-allowed"
+              />
+            </div>
 
-          {/* First Name */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              First Name
-            </label>
-            <input
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+            {/* First Name */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                First Name
+              </label>
+              <input
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              />
+            </div>
 
-          {/* Last Name */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Last Name
-            </label>
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+            {/* Last Name */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Last Name
+              </label>
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              />
+            </div>
 
-          {/* Contact Number */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Contact Number
-            </label>
-            <input
-              type="text"
-              name="contactNumber"
-              value={formData.contactNumber}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+            {/* Contact Number */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Contact Number
+              </label>
+              <input
+                type="text"
+                name="contactNumber"
+                value={formData.contactNumber}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              />
+            </div>
 
-          {/* Additional Info */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Additional Info
-            </label>
-            <textarea
-              name="additionalInfo"
-              value={formData.additionalInfo}
-              onChange={handleInputChange}
-              rows="4"
-              className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-            ></textarea>
-          </div>
+            {/* Additional Info */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Additional Info
+              </label>
+              <textarea
+                name="additionalInfo"
+                value={formData.additionalInfo}
+                onChange={handleInputChange}
+                rows="4"
+                className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              ></textarea>
+            </div>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full py-2 bg-purple-500 text-white font-bold rounded-md hover:bg-purple-600 transition-colors"
-          >
-            Register
-          </button>
-        </form>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full py-2 bg-purple-500 text-white font-bold rounded-md hover:bg-purple-600 transition-colors"
+            >
+              Register
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default RegistrationPage;

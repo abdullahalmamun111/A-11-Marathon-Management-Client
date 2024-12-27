@@ -1,28 +1,46 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AddMarathon from "../Components/AddMarathon";
 import { useNavigate } from "react-router-dom";
 import Mymarathon from "./Mymarathon";
 import Myapply from "./Myapply";
+import { contextApi } from "../AuthProvider/AuthContext";
+import Loading from "../Components/Loading";
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState("addMarathon");
     const navigate = useNavigate();
+    const {loading} = useContext(contextApi);
+
 
     const renderContent = () => {
         switch (activeTab) {
             case "addMarathon":
-                return <div className="p-6 rounded-lg">
+                if(loading){
+                    return <Loading></Loading>
+                }else{
+                    return <div className="p-6 rounded-lg">
                     <AddMarathon></AddMarathon>
                 </div>;
+                }
+                
             case "myMarathonList":
-                return <div className="bg-gray-100 p-6 rounded-lg shadow">
+                if(loading){
+                    return <Loading></Loading>
+                }else{
+                    return <div className="bg-gray-100 p-6 rounded-lg shadow">
                     <Mymarathon></Mymarathon>
                 </div>;
+                }
+               
             case "myApplyList":
-                return <div className="bg-gray-100 p-6 rounded-lg shadow">
-                    <Myapply></Myapply>
-                 
+                if(loading){
+                    return <Loading></Loading>
+                }else{
+                    return <div className="bg-gray-100 p-6 rounded-lg shadow">
+                    <Myapply></Myapply>               
                 </div>;
+                }
+
             default:
                 return <div className="bg-gray-100 p-6 rounded-lg shadow">Welcome to Dashboard</div>;
         }

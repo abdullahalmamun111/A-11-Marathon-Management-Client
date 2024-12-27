@@ -11,13 +11,14 @@ import PrivateRoute from './PrivateRoute';
 import AddMarathon from './AddMarathon';
 import Details from '../Pages/Details';
 import RegistrationPage from '../Pages/RegistrationPage';
+import ErrorPage from '../Pages/ErrorPage';
 
 const router = createBrowserRouter([
 
     {
         path:'/',
         element:<MainLayout></MainLayout>,
-        // errorElement: <h1>Page NOt Found</h1>,
+        errorElement: <ErrorPage></ErrorPage>,
         children:[
             {
                 path:'/',
