@@ -81,32 +81,35 @@ const MyApply = () => {
   };
 
   const handleDelete = (id) => {
-    // Swal.fire({
-    //   title: "Are you sure?",
-    //   text: "You won't be able to revert this!",
-    //   icon: "warning",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#3085d6",
-    //   cancelButtonColor: "#d33",
-    //   confirmButtonText: "Yes, delete it!",
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     fetch(`http://localhost:5000/registrations/${id}`, {
-    //       method: "DELETE",
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => {
-    //         if (data.deletedCount) {
-    //           Swal.fire(
-    //             "Deleted!",
-    //             "Your application has been deleted.",
-    //             "success"
-    //           );
-    //           setApplyData(applyData.filter((apply) => apply._id !== id));
-    //         }
-    //       });
-    //   }
-    // });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/allapply/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Apply has been deleted.",
+                icon: "success",
+              });
+              const remaining = applyData.filter(
+                (apply) => apply._id !== id
+              );
+              setApplyData(remaining);
+            }
+          });
+      }
+    });
   };
 
   return (
