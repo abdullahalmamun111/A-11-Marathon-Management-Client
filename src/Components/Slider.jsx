@@ -22,26 +22,27 @@ const Slider = () => {
   const slides = [
     {
       image: img_1,
-      title: "Fuel the Dreams of Tomorrow",
+      title: "Run for a Cause, Run for Glory",
       description:
-        "Your contribution can turn a small idea into a life-changing innovation. Support now!",
-      buttonText: "Donate",
+        "Every step you take brings hope, change, and a brighter future for those in need. Join the journey!",
+      buttonText: "Join the Race",
     },
     {
       image: img_2,
-      title: "Empower Change Together",
+      title: "Push Your Limits, Inspire Others",
       description:
-        "Join hands to fund creative ideas and impactful causes. Together, we can make a difference.",
-      buttonText: "Get Involved",
+        "Challenge yourself and inspire your community to achieve greatness. Be part of something extraordinary.",
+      buttonText: "Register Now",
     },
     {
       image: img_3,
-      title: "Hope in Every Contribution",
+      title: "Together, We Achieve More",
       description:
-        "Every donation you make brings hope and creates opportunities for those in need.",
-      buttonText: "Join Us",
+        "From personal triumphs to charitable milestones, this marathon unites us in purpose and spirit.",
+      buttonText: "Learn More",
     },
   ];
+  
 
   if (loading) {
     return <Loading></Loading>;

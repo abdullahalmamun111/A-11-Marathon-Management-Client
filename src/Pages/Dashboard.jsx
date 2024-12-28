@@ -9,54 +9,60 @@ import Loading from "../Components/Loading";
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState("addMarathon");
     const navigate = useNavigate();
-    const {loading} = useContext(contextApi);
-
+    const { loading } = useContext(contextApi);
 
     const renderContent = () => {
         switch (activeTab) {
             case "addMarathon":
-                if(loading){
-                    return <Loading></Loading>
-                }else{
-                    return <div className="p-6 rounded-lg">
-                    <AddMarathon></AddMarathon>
-                </div>;
+                if (loading) {
+                    return <Loading />;
+                } else {
+                    return (
+                        <div className="p-6 rounded-lg">
+                            <AddMarathon />
+                        </div>
+                    );
                 }
-                
             case "myMarathonList":
-                if(loading){
-                    return <Loading></Loading>
-                }else{
-                    return <div className="bg-gray-100 p-6 rounded-lg shadow">
-                    <Mymarathon></Mymarathon>
-                </div>;
+                if (loading) {
+                    return <Loading />;
+                } else {
+                    return (
+                        <div className="bg-gray-100 p-6 rounded-lg shadow">
+                            <Mymarathon />
+                        </div>
+                    );
                 }
-               
             case "myApplyList":
-                if(loading){
-                    return <Loading></Loading>
-                }else{
-                    return <div className="bg-gray-100 p-6 rounded-lg shadow">
-                    <Myapply></Myapply>               
-                </div>;
+                if (loading) {
+                    return <Loading />;
+                } else {
+                    return (
+                        <div className="bg-gray-100 p-6 rounded-lg shadow">
+                            <Myapply />
+                        </div>
+                    );
                 }
-
             default:
-                return <div className="bg-gray-100 p-6 rounded-lg shadow">Welcome to Dashboard</div>;
+                return (
+                    <div className="bg-gray-100 p-6 rounded-lg shadow">
+                        Welcome to Dashboard
+                    </div>
+                );
         }
     };
 
     return (
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
             {/* Header */}
             <header className="bg-blue-600 text-white text-center py-4">
                 <h1 className="text-2xl font-bold">Dashboard</h1>
             </header>
 
             {/* Main Layout */}
-            <div className="flex flex-1">
+            <div className="flex flex-1 flex-col md:flex-row">
                 {/* Sidebar */}
-                <nav className="w-1/4 bg-gray-800 text-white p-4">
+                <nav className="w-full md:w-1/4 bg-gray-800 text-white p-4">
                     <ul className="space-y-4">
                         <li>
                             <button
@@ -98,12 +104,10 @@ const Dashboard = () => {
                 </nav>
 
                 {/* Content Area */}
-                <main className="w-3/4 h-full p-6 bg-gray-50">
+                <main className="w-full md:w-3/4 h-full p-6 bg-gray-50 overflow-y-auto">
                     {renderContent()}
                 </main>
             </div>
-
-           
         </div>
     );
 };
