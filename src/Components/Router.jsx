@@ -43,17 +43,17 @@ const router = createBrowserRouter([
             {
                 path:'details/:id',
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/marathon/${params.id}`)
+                loader: ({params}) => fetch(`https://marathon-mangement-server.vercel.app/marathon/${params.id}`)
             },
             {
                 path:'marathons/details/:id',
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/marathon/${params.id}`)
+                loader: ({params}) => fetch(`https://marathon-mangement-server.vercel.app/marathon/${params.id}`)
             },
             {
                 path:'registration/:id',
                 element: <PrivateRoute><RegistrationPage></RegistrationPage></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/marathon/${params.id}`)
+                loader: ({params}) => fetch(`https://marathon-mangement-server.vercel.app/marathon/${params.id}`)
             }
         ]
     }

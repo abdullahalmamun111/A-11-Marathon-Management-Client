@@ -28,7 +28,7 @@ const AddMarathon = () => {
         marathonData.registrationCount = 0;
         marathonData.email = user.email;
 
-        fetch('http://localhost:5000/addmarathon',{
+        fetch('https://marathon-mangement-server.vercel.app/addmarathon',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

@@ -31,7 +31,7 @@ const Mymarathon = () => {
     updateMarathonData.registrationCount = 0;
     updateMarathonData.email = user.email;
     
-    fetch(`http://localhost:5000/updateMarathon/${id}`,{
+    fetch(`https://marathon-mangement-server.vercel.app/updateMarathon/${id}`,{
         method:"PUT",
         headers: {
             'content-type':'application/json'
@@ -67,7 +67,7 @@ const Mymarathon = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allmarathon?email=${user.email}`)
+    fetch(`https://marathon-mangement-server.vercel.app/allmarathon?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMarathon(data);
@@ -85,7 +85,7 @@ const Mymarathon = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/allmarathon/${id}`, {
+        fetch(`https://marathon-mangement-server.vercel.app/allmarathon/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -50,7 +50,7 @@ const RegistrationPage = () => {
       marathon_id: _id,
     };
 
-    fetch("http://localhost:5000/registrations", {
+    fetch("https://marathon-mangement-server.vercel.app/registrations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

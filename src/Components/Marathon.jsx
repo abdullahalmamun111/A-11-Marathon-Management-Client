@@ -8,7 +8,7 @@ const Marathon = () => {
   const [marathon, setMarathon] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/marathon")
+    fetch("https://marathon-mangement-server.vercel.app/marathon")
       .then((res) => res.json())
       .then((data) => {
         setMarathon(data);

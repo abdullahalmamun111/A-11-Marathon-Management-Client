@@ -18,7 +18,7 @@ const MyApply = () => {
     const fetchSearchResults = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/searchApply?email=${user.email}&title=${searchQuery}`
+          `https://marathon-mangement-server.vercel.app/searchApply?email=${user.email}&title=${searchQuery}`
         );
         const data = await response.json();
         setApplyData(data); // সার্চ রেজাল্ট সেট
@@ -32,7 +32,7 @@ const MyApply = () => {
 
 //   apply data load
   useEffect(() => {
-    fetch(`http://localhost:5000/registrations?email=${user.email}`)
+    fetch(`https://marathon-mangement-server.vercel.app/registrations?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setApplyData(data);
@@ -60,7 +60,7 @@ const MyApply = () => {
     const updateApplyData = Object.fromEntries(formData.entries());
     updateApplyData.marathon_id = loadedData._id;
 
-    fetch(`http://localhost:5000/updateApply/${updateapplyId}`, {
+    fetch(`https://marathon-mangement-server.vercel.app/updateApply/${updateapplyId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -90,7 +90,7 @@ const MyApply = () => {
 
   const handleUpdate = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/registrations/${id}`);
+      const response = await fetch(`https://marathon-mangement-server.vercel.app/registrations/${id}`);
       const data = await response.json();
       setloadedData(data);
       setUpdateApplyId(id);
@@ -111,7 +111,7 @@ const MyApply = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/allapply/${id}`, {
+        fetch(`https://marathon-mangement-server.vercel.app/allapply/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
