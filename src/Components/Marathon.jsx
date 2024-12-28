@@ -21,7 +21,7 @@ const Marathon = () => {
     return (
       <div className="bg-gray-100 py-10">
         <div className="text-center mb-10">
-          <h1 className="text-5xl font-bold text-purple-500"> MARATHON</h1>
+          <h1 className="text-4xl font-bold text-purple-500"> MARATHON</h1>
         </div>
 
         <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
