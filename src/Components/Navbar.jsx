@@ -204,8 +204,8 @@ const Navbar = () => {
               </button>
               <div
                 className="relative"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+                // onMouseEnter={() => setIsHovered(true)}
+                // onMouseLeave={() => setIsHovered(false)}
               >
                 <img
                   data-tooltip-id="my-tooltip-2"

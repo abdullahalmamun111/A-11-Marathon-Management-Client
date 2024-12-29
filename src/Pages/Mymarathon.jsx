@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Mymarathon = () => {
   const navigate = useNavigate();
@@ -67,11 +68,13 @@ const Mymarathon = () => {
   };
 
   useEffect(() => {
-    fetch(`https://marathon-mangement-server.vercel.app/allmarathon?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setMarathon(data);
-      });
+    // fetch(`https://marathon-mangement-server.vercel.app/allmarathon?email=${user.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setMarathon(data);
+    //   });
+    axios.get(`https://marathon-mangement-server.vercel.app/allmarathon?email=${user.email}`)
+    .then(res => setMarathon(res.data))
   }, [user.email]);
 
   const handleDelete = (id) => {

@@ -2,17 +2,22 @@ import React, { useContext, useEffect, useState } from "react";
 import { contextApi } from "../AuthProvider/AuthContext";
 import Loading from "./Loading";
 import MarathonCard from "./MarathonCard";
+import axios from "axios";
 
 const Marathon = () => {
   const { loading } = useContext(contextApi);
   const [marathon, setMarathon] = useState([]);
 
   useEffect(() => {
-    fetch("https://marathon-mangement-server.vercel.app/marathon")
-      .then((res) => res.json())
-      .then((data) => {
-        setMarathon(data);
-      });
+    // fetch("https://marathon-mangement-server.vercel.app/marathon")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setMarathon(data);
+    //   });
+    axios.get(`https://marathon-mangement-server.vercel.app/marathon`,{
+      withCredentials:true
+    })
+    .then(res => setMarathon(res.data))
   }, []);
 
   if (loading) {

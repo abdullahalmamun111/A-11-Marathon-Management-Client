@@ -3,6 +3,7 @@ import { contextApi } from "../AuthProvider/AuthContext";
 import Swal from "sweetalert2";
 import Mymarathon from "./Mymarathon";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const MyApply = () => {
   const { user } = useContext(contextApi);
@@ -13,7 +14,7 @@ const MyApply = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
 
-  // সার্চ অনুযায়ী আবেদন ফিল্টার করা
+ 
   useEffect(() => {
     const fetchSearchResults = async () => {
       try {
@@ -21,7 +22,7 @@ const MyApply = () => {
           `https://marathon-mangement-server.vercel.app/searchApply?email=${user.email}&title=${searchQuery}`
         );
         const data = await response.json();
-        setApplyData(data); // সার্চ রেজাল্ট সেট
+        setApplyData(data); 
       } catch (error) {
         console.error("Error fetching search results:", error);
       }
@@ -32,11 +33,15 @@ const MyApply = () => {
 
 //   apply data load
   useEffect(() => {
-    fetch(`https://marathon-mangement-server.vercel.app/registrations?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setApplyData(data);
-      });
+    // fetch(`https://marathon-mangement-server.vercel.app/registrations?email=${user.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setApplyData(data);
+    //   });
+    axios.get(`https://marathon-mangement-server.vercel.app/registrations?email=${user.email}`,{
+      withCredentials: true
+    })
+    .then(res => setApplyData(res.data))
   }, [user.email]);
 
   //   update related work
