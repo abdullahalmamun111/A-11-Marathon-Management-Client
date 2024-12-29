@@ -38,7 +38,7 @@ const handleLogOut = () => {
         if(currentuser?.email) {
           const user = {email: currentuser.email};
 
-          axios.post('http://localhost:5000/jwt', user, {
+          axios.post('https://marathon-mangement-server.vercel.app/jwt', user, {
             withCredentials: true
           })
           .then(res => {
@@ -47,7 +47,7 @@ const handleLogOut = () => {
           })
         }
         else{
-          axios.post('http://localhost:5000/logout', {} , {
+          axios.post('https://marathon-mangement-server.vercel.app/logout', {} , {
             withCredentials: true
           })
           .then(res => {

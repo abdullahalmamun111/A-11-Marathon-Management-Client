@@ -1,67 +1,69 @@
-# **Marathon**
+# **RunSphere**
 
-FundSprout is a modern crowdfunding platform designed to bring ambitious ideas to life and provide essential support for those in need. Whether you're launching a creative project, funding a startup, or raising money for personal needs, FundSprout empowers you with the tools and visibility to turn your vision into reality.
-
----
-
-## 🌟 **Purpose of Marathon**
-
-The purpose of FundSprout is to empower individuals, innovators, and communities by providing a transparent, reliable, and efficient platform to bring their dreams to life. Whether it's funding a personal cause, supporting a creative project, or launching a startup, FundSprout connects passionate dreamers with generous backers to create a positive impact.
+**RunSphere** is a modern platform dedicated to connecting runners with marathons worldwide. Whether you're a seasoned athlete or a first-time participant, RunSphere provides an engaging and secure platform to explore, register, and manage marathon events with ease.
 
 ---
 
 ## 🌐 **Live URL**
 
-Visit the live website: []
+Visit the live website: [[RunSphere Live](https://assignment-11-authentica-2a8c3.web.app/)]*
 
 ---
 
 ## ✨ **Key Features**
 
-1. **Responsive Design**  
-   - Fully optimized for all devices, from desktops to mobiles.
+1. **Comprehensive Event Management**  
+   - View, register, and participate in a wide range of marathons with ease.
 
-2. **Dynamic Navbar**  
-   - User-friendly navigation with profile picture integration for logged-in users.
+2. **User Authentication**  
+   - Secure login and registration, including social login options (e.g., Google).
 
-3. **Donation Campaigns**  
-   - Users can view Running campaigns and their details .
+3. **Personalized Dashboard**  
+   - Track your registered events and manage your marathon participation seamlessly.
 
+4. **Dynamic Search and Filtering**  
+   - Find marathons by location, date, or distance with an intuitive search feature.
 
-4. **Authentication**  
-   - Secure login, registration, and Google authentication using Firebase.
+5. **Real-time Updates**  
+   - Stay informed with live updates on registration counts and event details.
 
-5. **Interactive UI**  
-   - Eye-catching banners, meaningful icons, and an engaging color palette tailored to the theme.
-
-6. **Other Key Features** 
-Effortless campaign creation for startups, personal causes, and creative projects.
-Transparent fundraising with real-time progress tracking.
-Secure donations and hassle-free withdrawals.
-A vibrant community of supporters who believe in making a difference.
+6. **Other Key Features**:  
+   - Transparent event details, including start and registration dates.  
+   - Responsive design for flawless use on mobile, tablet, and desktop devices.  
+   - Easy-to-use tools for marathon organizers to create and manage events.
 
 ---
 
 ## 📦 **npm Packages Used**
 
-1. **`react`**  
-   - Core framework for building user interfaces.
+1. **`express`**  
+   - Backend framework to manage server-side operations efficiently.
 
-2. **`react-router-dom`**  
-   - For handling navigation and routing across pages.
+2. **`cors`**  
+   - Enable secure cross-origin requests.
 
-3. **`tailwindcss`**  
-   - For quick and responsive styling.
+3. **`jsonwebtoken`**  
+   - Implement robust authentication with JWT tokens.
 
-4. **`daisyui`**  
-   - UI component library to enhance the design.
+4. **`mongodb`**  
+   - Database for storing and managing event and registration data.
 
-5. **`sweetalert2`**  
-   - To display interactive, user-friendly toast notifications.
+5. **`tailwindcss`**  
+   - Responsive and modern CSS framework for styling.
 
 6. **`firebase`**  
-   - For authentication and user management.
-
+   - Simplifies authentication and user management.
 
 ---
+
+## 🚀 **Purpose of RunSphere**
+
+The goal of **RunSphere** is to empower runners and event organizers by creating a transparent and seamless platform for marathon participation. By fostering a vibrant community of fitness enthusiasts, RunSphere inspires people to challenge themselves and celebrate the joy of running together.
+
+---
+
+
+## 🤝 **Contributions**
+
+Contributions are welcome! If you’d like to contribute, please fork the repository and submit a pull request.
 
